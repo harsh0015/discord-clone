@@ -1,0 +1,37 @@
+import express from "express"
+import mongoose from "mongoose"
+import cors from "cors"
+import mongoData from "./mongoData "
+
+//app config
+const app=express();
+const port=process.env.PORT || 8002
+
+
+//middleware
+app.use(express.json())
+app.use(cors())
+
+
+//db config
+const mongoURL="mongodb+srv://admin:FcfC1bRwBk1lHvcu@cluster0.y7fzx.mongodb.net/discordDB?retryWrites=true&w=majority"
+
+mongoose.connect(mongoURL,{
+    useCreateIndex:true,
+    useNewUrlParser:true,
+    useUnifiedTopology:true
+})
+
+
+//FcfC1bRwBk1lHvcu
+
+//api routes
+app.get('/',(req,res)=>{
+    res.status(200).send("hello peeps")
+})
+
+
+//listening part
+app.listen(port,()=>{
+    console.log("server started")
+})
